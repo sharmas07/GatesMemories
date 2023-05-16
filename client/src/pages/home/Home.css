@@ -1,0 +1,15 @@
+.Home{
+    position: relative;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 18rem 25rem;
+    gap: 1rem;
+}
+@media (max-width: 768px) {
+    .Home{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 1rem 4px;
+    }
+}
