@@ -80,7 +80,6 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
         console.log(err);
       }
     }
-    console.log('before updating user');
     dispatch(updateUser(param.id, UserData));
     setModalOpened(false);
   };
