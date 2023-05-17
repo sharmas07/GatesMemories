@@ -5,18 +5,16 @@ import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadImage, uploadPost } from "../../actions/UploadAction.js";
+import { uploadPost } from "../../actions/UploadAction.js";
 import axios from "axios";
 
 const PostShare = () => {
 
-  const[image_url, setImageUrl] = useState('')
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
   const loading = useSelector((state) => state.postReducer.uploading);
   const [image, setImage] = useState(null);
   const desc = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   // handle Image Change
   const onImageChange = (event) => {
@@ -49,7 +47,7 @@ const PostShare = () => {
       try {
         // dispatch(uploadImage(data));
         const res = await axios.post(
-          "http://localhost:8080/upload",
+          "https://gatesmemoriesapi.onrender.com/upload",
           data,{
             headers:{
               'Content-Type': 'multipart/form-data'
