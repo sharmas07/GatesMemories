@@ -46,7 +46,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       try {
         // dispatch(uploadImage(data));
         const res = await axios.post(
-          "http://localhost:8080/upload",
+          "https://gatesmemoriesapi.onrender.com/upload",
           data,{
             headers:{
               'Content-Type': 'multipart/form-data'
@@ -67,7 +67,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       UserData.coverPicture = fileName;
       try {
         const res = await axios.post(
-          "http://localhost:8080/upload",
+          "https://gatesmemoriesapi.onrender.com/upload",
           data,{
             headers:{
               'Content-Type': 'multipart/form-data'
@@ -107,16 +107,8 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
               type="text"
               name="firstname"
               className="info-input"
-              placeholder="First Name"
-              value={formData.firstname}
-            />
-            <input
-              value={formData.lastname}
-              onChange={handleChange}
-              type="text"
-              name="lastname"
-              className="info-input"
-              placeholder="Last Name"
+              placeholder="username"
+              value={formData.username}
             />
           </>
           <>
@@ -138,14 +130,6 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
               className="info-input"
               placeholder="LivesIn"
             />
-            <input
-              value={formData.country}
-              onChange={handleChange}
-              type="text"
-              name="country"
-              className="info-input"
-              placeholder="country"
-            />
           </>
           <>
             <input
@@ -153,7 +137,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
               onChange={handleChange}
               type="text"
               className="info-input"
-              placeholder="relationship status"
+              placeholder="Current year"
               name="relationship"
             />
           </>

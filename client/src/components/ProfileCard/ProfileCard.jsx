@@ -16,7 +16,7 @@ const ProfileCard = ({location, handleSideBar}) => {
             <img src={user && user.profilePicture? user.profilePicture :Profile} alt="" />
         </div>
         <div className="ProfileName">
-            <span>{user && user.firstname} {user && user.lastname}</span>
+            <span>{user && user.username} </span>
             <span>{user && user.worksAt? user.worksAt:'your branch'}</span>
         </div>
         <div className="followStatus">

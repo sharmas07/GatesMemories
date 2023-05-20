@@ -1,7 +1,12 @@
 import userModel from "../mongodb/models/userModel.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import followedByUserEmail from "../views/email/followedByUser.js";
+import sgMail from '@sendgrid/mail';
+import dotenv from 'dotenv'
+dotenv.config()
 
+sgMail.setApiKey(process.env.TWILLIO_API_KEY);
 
 // Get all users
 export const getAllUsers = async (req, res) => {
@@ -97,12 +102,37 @@ export const followUser = async (req, res)=>{
     }
     else{
         try {
-            const followUser = await userModel.findById(id)
-            const followingUser =await userModel.findById(_id)
+            const followedUser = await userModel.findById(id)
+            const followedByUser =await userModel.findById(_id)
+            console.log(followUser)
+            console.log(followedByUser)
+            if(!followedUser.followers.includes(_id)){
+                await followedUser.updateOne({$push: {followers: _id}})
+                await followedByUser.updateOne({$push: {following: id}})
 
-            if(!followUser.followers.includes(_id)){
-                await followUser.updateOne({$push: {followers: _id}})
-                await followingUser.updateOne({$push: {following: id}})
+                // TODO : integrate twillio api
+                const emailBody = followedByUserEmail(followedUser.username, followedByUser.username)
+
+                const msg = {
+                    to: `${followedUser.email}`,
+                    from: 'valis6435@gmail.com',
+                    subject: 'GatesMemories - you got a new follower',
+                    html: emailBody,
+                };
+                
+                (async () => {
+                    try {
+                    await sgMail.send(msg);
+                    console.log('Email sent successfully');
+                    } catch (error) {
+                    console.error(error);
+                
+                    if (error.response) {
+                        console.error(error.response.body);
+                    }
+                    }
+                })();
+
                 res.status(200).json("User followed!");
             }
             else{

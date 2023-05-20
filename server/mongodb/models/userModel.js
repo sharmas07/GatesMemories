@@ -9,17 +9,13 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    firstname:{
-        type:String,
-        required:true
-    },
-    lastname:{
-        type:String,
-        required:true
-    },
     isAdmin:{
         type:Boolean,
         default:false
+    },
+    email:{
+        type:String,
+        required:true
     },
     profilePicture: String,
     coverPicture: String,
