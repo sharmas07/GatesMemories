@@ -11,8 +11,7 @@ const Auth = () => {
   const loading = useSelector((state)=>state.authReducer.loading)
   const [isSignUp, setIsSignUp] = useState(true);
   const [data, setData] = useState({
-    firstname: "",
-    lastname: "",
+    email:"",
     password: "",
     confirmpassword: "",
     username: "",
@@ -38,8 +37,7 @@ const Auth = () => {
   // Reset Form
   const resetForm = () => {
     setData({
-      firstname: "",
-      lastname: "",
+      email:"",
       password: "",
       confirmpassword: "",
       username: "",
@@ -61,25 +59,6 @@ const Auth = () => {
       <div className="a-right">
         <form className="infoForm authForm" onSubmit={handleSubmit}>
           <h3>{isSignUp ? "Sign Up" : "Log In"}</h3>
-
-          {isSignUp && (
-            <>
-              <input
-                onChange={handleChange}
-                type="text"
-                placeholder="First Name"
-                className="info-input"
-                name="firstname"
-              />
-              <input
-                onChange={handleChange}
-                type="text"
-                placeholder="Last Name"
-                className="info-input"
-                name="lastname"
-              />
-           </>
-          )}
           
             <input
               onChange={handleChange}
@@ -88,6 +67,13 @@ const Auth = () => {
               name="username"
               placeholder="Username"
             />
+           {isSignUp && <input
+              onChange={handleChange}
+              type="email"
+              className="info-input"
+              name="email"
+              placeholder="Email"
+            />}
          
           
             <input
