@@ -115,7 +115,7 @@ export const followUser = async (req, res)=>{
 
                 const msg = {
                     to: `${followedUser.email}`,
-                    from: 'valis6435@gmail.com',
+                    from: 'gatesmemories@gmail.com',
                     subject: 'GatesMemories - you got a new follower',
                     html: emailBody,
                 };
