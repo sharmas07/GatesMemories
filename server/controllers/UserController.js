@@ -172,3 +172,17 @@ export const UnfollowUser = async (req, res)=>{
         }
     }
 }
+
+// search user by username
+export const searchUsersByUsername = async (req, res) => {
+    const searchString = `^${req.body.searchString}`;
+    try {
+        const users = await userModel.find({ username: { $regex: searchString, $options: "i" }}).select('-password').exec();
+        res.status(200).json(users)
+        return;
+    } catch (error) {
+        res.status(501).json(error)
+        return;
+    }
+};
+  
