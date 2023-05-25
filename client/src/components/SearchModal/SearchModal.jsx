@@ -22,7 +22,7 @@ const SearchModal = ({ modalOpened, setModalOpened }) => {
       return;
     }
     setLoading(true);
-    const {data} = await axios.post('http://localhost:5000/user/search',{searchString:searchref.current.value})
+    const {data} = await axios.post('https://gatesmemoriesapi.onrender.com/user/search',{searchString:searchref.current.value})
     if (data.length !== 0) {
       console.log(data)
       setUsersList(data)
@@ -72,7 +72,7 @@ const SearchModal = ({ modalOpened, setModalOpened }) => {
             justifyContent: "center",
           }}
         >
-          {loading ? <Loader /> : <SearchList searchString={searchref.current.value} data={usersList} />}
+          {loading ? <Loader /> : <SearchList searchString={searchString} data={usersList} />}
         </div>
       </div>
     </Modal>

@@ -5,7 +5,7 @@ import "./SearchList.css";
 const SearchList = ({ data, searchString }) => {
   return (
     <div className="search-list">
-      {searchString.length > 0 ? data.length > 0 ? (
+      {searchString ? data.length > 0 ? (
         data.map((user) => <SearchUserCard user={user} />)
       ) : (
         <h3>No users found</h3>
