@@ -11,7 +11,7 @@ const Profile = ({ handleSideBar}) => {
 
         <div className="Profile-center">
             <ProfileCard location="profilePage"/>
-            <h3 style={{margin:'auto'}}>Your Posts</h3>
+            <h3 style={{margin:'4px'}}>Your Posts</h3>
             <PostSide/>
         </div>
     </div>

@@ -1,0 +1,13 @@
+.search-list{
+    width: 46%;
+    max-height: 20rem;
+    overflow-y: auto;
+}
+
+@media (max-width:473px) {
+    .search-list{
+        width: 100%;
+        max-height: 14rem;
+    overflow-y: auto;
+    }
+}

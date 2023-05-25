@@ -1,0 +1,37 @@
+.search-card-container{
+    border: 1px solid;
+    margin: 4px;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+    border-radius: 8px;
+}
+.search-userimg-name{
+    display: flex;
+    align-items: center;
+}
+.search-card-img{
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+.fc-btn{
+    margin-right: 4px;
+}
+
+@media (max-width:473px){
+    h3{
+        font-size: 12px;
+    }
+    .search-card-img{
+        width: 35px;
+        height: 35px;
+        
+    }
+    .fc-btn{
+        font-size: 10px;
+        padding: 0 0.8rem;
+    }
+}
